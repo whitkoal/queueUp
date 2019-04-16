@@ -1,0 +1,21 @@
+{
+  "pages": [
+    "pages/home/home",
+    "pages/chaxun/chaxun",
+    "pages/passUser/passUser",
+    "pages/paidui/paidui",
+    "pages/guanli/guanli",
+    "pages/index/index",
+    "pages/QRcode/QRcode",
+    
+    "pages/logs/logs"
+    
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#f3f3f3",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black"
+  },
+  "sitemapLocation": "sitemap.json"
+}

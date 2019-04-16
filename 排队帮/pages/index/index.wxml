@@ -1,0 +1,5 @@
+
+<button class="btn1" bindtap='login'>
+ <view class="btntext">登录</view>
+</button>
+

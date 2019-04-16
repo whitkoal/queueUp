@@ -1,0 +1,26 @@
+<form bindsubmit='submitForm'>
+  <view class="container">
+    <view class='container-info'>
+      <view class="man-form-info">
+        <view class='leaderwxname'>创建者姓名
+          <input maxlength='20' placeholder='请输入姓名' name="leaderwxname"></input>
+        </view>
+        <view class='quename'>
+          队列名称
+      <input maxlength='30' placeholder='请输入队列名称'  name="quename"></input>
+       </view>
+
+       <view class='introduce'>
+         简介
+         <textarea maxlength='100' placeholder='队列简介' name="introduce"></textarea>
+         </view>
+       </view>
+     </view>
+ 
+     <view class='submit-form-info'>
+       <button form-type='submit'>提交</button>
+     </view>
+ 
+   </view>
+ </form>
+ 

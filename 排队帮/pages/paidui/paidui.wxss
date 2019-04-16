@@ -1,0 +1,57 @@
+page {
+  font-size: 35rpx;
+  background-color: #f3f3f3;
+}
+
+input:hover {
+  border: 1px solid rgb(0, 0, 0);
+}
+
+.container-info {
+   padding: 5%;
+ }
+ 
+ .man-form-info {
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: center;
+   margin-top: 5px;
+ }
+ 
+ .man-form-info .queid {
+   display: flex;
+   width: 90%;
+   flex-wrap: wrap;
+   margin-top: 5%;
+   margin-left:15%;
+ }
+
+ .man-form-info input {
+   width: 90%;
+   border:1px solid #131212 ;
+   border-radius: 10px;
+   margin-top:10px;
+   font-size:30rpx;
+ }
+
+.submit-form-info {
+  display: flex;
+  justify-content: center;
+}
+
+.submit-form-info button {
+  
+  margin-top: 30px;
+  margin-left: 5px;
+  display: inline-block;
+  padding:0px 50px;
+  font-size:24px;
+  cursor:pointer;
+  text-decoration: none;
+  outline:none;
+  color:#f8f7a3;
+  background-color:#131212;
+  border-radius: 50px;
+  box-shadow:0 9px #999;
+
+}

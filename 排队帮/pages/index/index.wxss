@@ -1,0 +1,16 @@
+.btn1{
+  width:100px;
+  height: 100px;
+  margin-top: 300px;
+  border: 0 solid #ffffff;
+  border-radius: 500px;
+  box-shadow:  0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  background-color: #3241ca;
+ 
+}
+.btntext{
+  font-size: 25px;
+  overflow: hidden;
+  margin-top:18px;
+  color:rgb(255, 250, 185)
+}

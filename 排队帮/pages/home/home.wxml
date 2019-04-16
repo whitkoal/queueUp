@@ -1,0 +1,3 @@
+<!--pages/home/home.wxml-->
+ <button class="homebtn1" bindtap="guanli">创建队列</button>
+   <button class="homebtn2" bindtap="paidui">加入队列</button>
