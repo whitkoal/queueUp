@@ -1,59 +1,72 @@
 // pages/chaxun/chaxun.js
+var app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    userIndex : 0
+    userIndex : 0,
+    interval : null,
+    err: false
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var that = this;
-    var openid = wx.getStorageSync("openid")
-    var queid  = wx.getStorageSync("queid")
-    wx.request({
-      url: 'http://www.paion.xyz/queue/user/userIndex',
-      data: {
-        'openid': openid,
-        'queid': queid
-      },
-      header: {},
-      method: 'POST',
-      dataType: 'json',
-      success: function(res) {
-        console.log(res.data.userIndex)
-        that.setData({
-          userIndex: res.data.userIndex
-        });
-      },
-      fail: function(res) {},
-      complete: function(res) {},
-    })
+    
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    var that = this
+    this.data.interval = setInterval(function (openid, queid) {
+      wx.request({
+        url: 'https://www.paion.xyz/queue/user/userIndex',
+        data: {
+          'openid': openid,
+          'queid': queid
+        },
+        method: 'POST',
+        dataType: 'json',
+        success: function (res) {
+          if(res.data.msg == 1) {
+          that.setData({
+            userIndex: res.data.userIndex
+          });
+          console.log("用户实时 :" + that.data.userIndex)
+          }else{
+            that.setData({
+              err : true
+            })
+          }
+        },
+        fail: function (res) { },
+        complete: function (res) { },
+      })
+    },
+      3000,
+      app.globalData.openid,
+      app.globalData.queid
+    )
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-
+    var that = this
+    clearInterval(that.data.interval)
   },
 
   /**
@@ -87,11 +100,11 @@ Page({
   /**
     * 提交表单,退出队列
     */
-  formSubmit: function (e) {
-    var openid = wx.getStorageSync("openid")
-    var queid = wx.getStorageSync("queid")
+  exitQue: function (e) {
+    var that = this
+    var openid = app.globalData.openid
     wx.request({
-      url: 'http://www.paion.xyz/queue/user/joinQue',
+      url: 'https://www.paion.xyz/queue/user/joinQue',
       method: "POST",
       data: {
         'openid': openid,
@@ -101,7 +114,8 @@ Page({
       success: function (res) {
         if (res.data.msg == "1") {
           console.log("tuichu队列成功! !!");
-          wx.navigateTo({
+          clearInterval(that.data.interval)
+          wx.reLaunch({
             url: '../home/home'
           })
         } else {
@@ -110,5 +124,31 @@ Page({
 
       },
     })
-  }
+  },
+ 
+ /**
+  * 查询用户当前位置的方法
+  */
+  // showUserIndex : function (openid, queid){
+  //   wx.request({
+  //     url: 'https://www.paion.xyz/queue/user/userIndex',
+  //     data: {
+  //       'openid': openid,
+  //       'queid': queid
+  //     },
+  //     header: {},
+  //     method: 'POST',
+  //     dataType: 'json',
+  //     success: function (res) {
+  //       console.log(res.data.userIndex)
+  //       that.setData({
+  //         userIndex: res.data.userIndex
+  //       });
+  //     },
+  //     fail: function (res) { },
+  //     complete: function (res) { },
+  //   })
+  // }
+
+
 })

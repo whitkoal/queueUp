@@ -1,4 +1,5 @@
 import WxValidate from '../../utils/WxValidate.js';
+var app = getApp()
 Page({
  
    /**
@@ -7,13 +8,11 @@ Page({
    data: {},
  
     onLoad: function (options) {
-    
         /**
        * 4-1(先初始化表单)
        */
          this.initValidate();
-    
-  },
+    },
    
   
   
@@ -34,17 +33,15 @@ Page({
          const error = this.WxValidate.errorList[0]
          this.showModal(error)
          return false
-  
-}
+      }
      /**
        * 这里添写验证成功以后的逻辑
        * 
        */
-      var openid = wx.getStorageSync("openid");//这里有一个待处理问题，如果未获取到用户openid就会报500
-      //所以这里要先判断有没有openid，没有就去登录
+      var openid = app.globalData.openid
       console.log("创建队列时提交的openid是 : " + openid);
        wx.request({
-         url: 'http://www.paion.xyz/queue/que/creatqueue',
+         url: 'https://www.paion.xyz/queue/que/creatqueue',
          method: "POST",
          data: {
            'leaderopenid': openid,
@@ -54,7 +51,7 @@ Page({
          },
          success: function (res) {
            console.log("创建队列成功! !!");
-           wx.setStorageSync("queid", res.data.id);
+           app.globalData.queid = res.data.id
            wx.navigateTo({
              url: '../passUser/passUser'
            })
@@ -73,10 +70,9 @@ Page({
        console.log('将要提交的表单信息：', form);
   
        wx.showToast({
-           title: '提交成功！！！！',
+           title: '提交成功！',
          })
-  
-},
+    },
 
    /**
      * 表单-验证字段
@@ -97,7 +93,7 @@ Page({
         
   },
          introduce: {
-             required: true,
+             required: false,
            rangelength: [0, 100]
         
   }

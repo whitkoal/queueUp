@@ -21,6 +21,9 @@
         <view class='queid'>请输入您要加入队列的队列码
           <input maxlength='11' placeholder='请输入队列码' name="queid"></input>
         </view>
+        <view class='queid'>请输入您的称谓
+          <input maxlength='30'placeholder='请输入您的名字或昵称' name='userwxname'></input>
+        </view>
        </view>
      </view>
      <view class='submit-form-info'>

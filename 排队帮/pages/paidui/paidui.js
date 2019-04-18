@@ -1,5 +1,6 @@
 // pages/leftSwiperDel/index.js
 import WxValidate from '../../utils/WxValidate.js';
+var app = getApp()
 Page({
   data: {
     showModalStatus: false,
@@ -15,44 +16,41 @@ Page({
       showCancel: false,
     })
   },
-  submitForm(e) {
-    /**
+
+  /**
   * 4-3(表单提交校验)
   */
+  submitForm(e) {
     const params = e.detail.value
     if (!this.WxValidate.checkForm(params)) {
       const error = this.WxValidate.errorList[0]
       this.showModal(error)
       return false
     }
-    var openid = wx.getStorageSync("openid");//这里有一个待处理问题，如果未获取到用户openid就会报500
-    //所以这里要先判断有没有openid，没有就去登录
-    console.log("创建队列时提交的openid是 : " + openid);
-        wx.request({
-          url: 'http://www.paion.xyz/queue/user/joinQue',
-          method: "POST",
-          data: {
-            'openid': openid,
-            'queid': e.detail.value.queid,
-            'state': "2"
-          },
-          success: function (res) {
-            if (res.data.msg == "1") {
-              console.log("加入队列成功! !!");
-              wx.setStorageSync("queid", e.detail.value.queid);
-              wx.navigateTo({
-                url: '../chaxun/chaxun'
-              })
-            } else {
-              console.log(res.data.msg)
-            }
+    var openid = app.globalData.openid
+      wx.request({
+        url: 'https://www.paion.xyz/queue/user/joinQue',
+        method: "POST",
+        data: {
+          'openid': openid,
+          'queid': e.detail.value.queid,
+          'userwxname': e.detail.value.userwxname,
+          'state': "2"
+        },
+        success: function (res) {
+          if (res.data.msg == "1") {
+            console.log("加入队列成功! !!");
+            app.globalData.queid = e.detail.value.queid
+            wx.navigateTo({
+              url: '../chaxun/chaxun'
+            })
+          } else {
+            console.log(res.data.msg)
+          }
 
-          },
-        })
+        },
+      })
 
-      
-
-    
     //验证通过以后->
     this.submitInfo(params);
   },
@@ -65,7 +63,7 @@ Page({
     console.log('将要提交的表单信息：', form);
 
     wx.showToast({
-      title: '提交成功！！！！',
+      title: '提交成功！',
     })
 
   },

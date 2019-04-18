@@ -14,6 +14,7 @@ App({
   globalData: {
     userInfo: null,
     openid: null,
+    session_key:null,
     queid:null,
   },
   onLaunch: function () {
@@ -22,8 +23,7 @@ App({
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
     
-    var openid = null;
-
+    var that = this;
     function login (){
     //登录获取code
       wx.login({
@@ -31,7 +31,7 @@ App({
           //发送请求
           console.log("进入登录");
           wx.request({
-            url: 'http://www.paion.xyz/queue/user/login',
+            url: 'https://www.paion.xyz/queue/user/login',
             data: {
               code: res.code,//上面wx.login()成功获取到的code
             },
@@ -40,14 +40,14 @@ App({
               'content-type': 'application/json' //默认值
             },
             success: function (res) {
-              console.log(res.data.msg)
+              console.log(res.data)
               if(res.data.msg=="1"){
-
-                wx.setStorageSync("openid", res.data.openid);
-                wx.setStorageSync("session_key", res.data.session_key)
-                openid = res.data.openid;
+                //成功获取(注册了)到用户信息
+                that.globalData.openid = res.data.openid
+                that.globalData.session_key = res.data.session_key
+                that.globalData.queid = res.data.queid
                 if(res.data.state==2){
-                  //用户在某个队列中或管理了某个队列
+                  //用户在某个队列中正在排队
                   wx.showModal({
                     title: '提示',
                     content: '您在一个队列中，是否进入？',
@@ -56,12 +56,17 @@ App({
                     success(res) {
                       if (res.confirm) {
                         wx.navigateTo({
-                          url: "../paidui/paidui?id="+openid
+                          url: "../chaxun/chaxun"
                         })
                       } else if (res.cancel) {
                         console.log('用户点击取消')
                       }
                     }
+                  })
+                }else if(res.data.state==3){
+                  // 用户是某个队列的管理员
+                  wx.navigateTo({
+                    url: "../passUser/passUser"
                   })
                 }
               }else if(res.data.msg=="0"){
@@ -89,9 +94,7 @@ App({
       })
     }
     login();
-    this.globalData.openid = openid;
 
-    
     wx.getSetting({
       success: res => {
         if (res.authSetting['scope.userInfo']) {

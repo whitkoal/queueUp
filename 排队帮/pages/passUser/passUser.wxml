@@ -1,5 +1,22 @@
 <!--pages/passUser/passUser.wxml-->
 
 <view class="queid">您的队列码为:<view class="queid2">{{queid}}</view></view>   
-<view wx-for="item in list">
-</view>
+<form bindsubmit='queGoToDie'>
+<button plain='true'form-type="submit">销毁队列</button>
+</form>
+<!-- <view wx:for="{{list}}">
+<view>{{index}} : {{item.openid}}</view>
+</view> -->
+<view class="box-big" wx:for="{{list}}">
+    <view class="box">
+      {{index + 1}} ===>      {{item.userwxname}}
+      <form bindsubmit='formSubmit'>
+        <view class="container">
+            <input name="openid" value="{{item.openid}}" disabled='true'></input>
+          <view class='submit-form-info'>
+            <button form-type='submit'>Pass</button>
+          </view>
+        </view>
+      </form>
+    </view>
+  </view>
