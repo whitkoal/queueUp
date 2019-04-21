@@ -7,20 +7,56 @@ Page({
    */
   data: {
     userInQueue: false,
-    userControlQue: false 
+    userControlQue: false ,
+    buttenSetUp: "创建队列",
+    buttenJoin: "加入队列"
   },
+
   onLoad: function (options) {
     console.log("===========================>>onLoad<<")
+    
   },
+
+  /**
+   * 页面跳转
+   */
   paidui: function () {
-    wx.navigateTo({
-      url: '../paidui/paidui'
-    })
+    var that = this
+    if (that.data.userInQueue) {
+      // 用户在排队
+      wx.navigateTo({
+        url: '../chaxun/chaxun',
+      })
+    } else if (that.data.userControlQue) {
+      // 用户是队列管理员
+      wx.navigateTo({
+        url: '../passUser/passUser'
+      })
+    }else {
+      // 用户正常
+      wx.navigateTo({
+        url: '../paidui/paidui',
+      })
+    }
   },
   guanli: function () {
-    wx.navigateTo({
-      url: '../guanli/guanli'
-    })
+    var that = this
+      if (that.data.userInQueue) {
+        // 用户在排队
+        wx.navigateTo({
+          url: '../chaxun/chaxun',
+        })
+      } else if (that.data.userControlQue) {
+        // 用户是队列管理员
+        wx.navigateTo({
+          url: '../passUser/passUser'
+        })
+      } else {
+        // 用户正常
+        wx.navigateTo({
+          url: '../guanli/guanli',
+        })
+      }
   },
  
 
@@ -41,14 +77,26 @@ Page({
    */
   onShow: function () {
     console.log("===========================>>onShow<<"+this.data.userControlQue)
+    var that = this
     if(app.globalData.state == 2) {
-      this.setDate({
-        userInQueue: true
+      that.setData({
+        userInQueue: true,
+        userControlQue: false,
+        buttenJoin: "返回队列"
       })
     }else if(app.globalData.state == 3) {
-      this.data.userControlQue = true
-      console.log(this.data.userControlQue)
-     
+      that.setData({
+        userControlQue: true,
+        userInQueue: false,
+        buttenSetUp: "管理队列"
+      })
+    }else {
+      that.setData({
+        userControlQue: false,
+        userInQueue: false,
+        buttenSetUp: "创建队列",
+        buttenJoin: "加入队列"
+      })
     }
   },
 
@@ -56,7 +104,7 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-    console.log("===========================>>onHide<<")
+    console.log("===========================>>onHide<<home")
   },
 
   /**
@@ -70,7 +118,20 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-    console.log("===========================>>onPullDownRefresh<<")
+    console.log("===========================>>onPullDownRefresh<<home")
+    var state = app.globalData.state
+    wx.stopPullDownRefresh()
+    if(state == 2) {
+      // 用户正在排队
+      wx.navigateTo({
+        url: '../chaxun/chaxun',
+      })
+    }else if(state == 3) {
+      // 用户是队列管理员
+      wx.navigateTo({
+        url: '../passUser/passUser'
+      })
+    }
   },
 
   /**

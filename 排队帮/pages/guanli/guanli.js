@@ -25,16 +25,16 @@ Page({
    
   
     submitForm(e) {
-         /**
+      /**
        * 4-3(表单提交校验)
        */
       const params = e.detail.value
       if(!this.WxValidate.checkForm(params)) {
-         const error = this.WxValidate.errorList[0]
-         this.showModal(error)
-         return false
+        const error = this.WxValidate.errorList[0]
+        this.showModal(error)
+        return false
       }
-     /**
+      /**
        * 这里添写验证成功以后的逻辑
        * 
        */
@@ -52,8 +52,9 @@ Page({
          success: function (res) {
            console.log("创建队列成功! !!");
            app.globalData.queid = res.data.id
-           wx.navigateTo({
-             url: '../passUser/passUser'
+           app.globalData.state = 3
+           wx.redirectTo({
+             url: '../passUser/passUser',
            })
          },
        })

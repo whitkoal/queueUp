@@ -145,10 +145,10 @@ Page({
               if (res.data == "1") {
                 //提示用户，停止刷新list，并退到首页
                 clearInterval(i)
-                wx.reLaunch({
+                app.globalData.state = 1
+                  wx.reLaunch({
                   url: '../home/home'
                 })
-
               } else {
                 //未成功改变队列状态
               }
