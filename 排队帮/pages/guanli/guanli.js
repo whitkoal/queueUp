@@ -8,10 +8,10 @@ Page({
    data: {},
  
     onLoad: function (options) {
-        /**
-       * 4-1(先初始化表单)
-       */
-         this.initValidate();
+    /**
+     * 4-1(先初始化表单)
+     */
+      this.initValidate();
     },
    
   

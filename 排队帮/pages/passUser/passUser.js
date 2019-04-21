@@ -47,7 +47,7 @@ Page({
   },
 
   /**
-   * 生命周期函数--监听页面显示, onshow不执行第3此，第二次进入onshow时数据越刷越快
+   * 生命周期函数--监听页面显示
    */
   onShow: function () {
     console.log("==============================================>onShow执行了")
@@ -72,7 +72,7 @@ Page({
         complete: function (res) { },
       })
     },
-      500,
+      1000,
       app.globalData.queid
     )
   },
@@ -91,6 +91,8 @@ Page({
    */
   onUnload: function () {
     console.log("==============================================>onUnload执行了")
+    var i = this.data.i
+    clearInterval(i)
   },
 
   /**
@@ -118,7 +120,8 @@ Page({
  * 销毁队列
  */
   queGoToDie: function(e) {
-    var that = this
+    var queid = app.globalData.queid
+    var i =this.data.i
     // 将队列管理者变为普通空闲用户
     wx.request({
       url: 'https://www.paion.xyz/queue/user/joinQue',
@@ -132,20 +135,21 @@ Page({
         if (res.data.msg == "1") {
           wx.request({
             url: 'https://www.paion.xyz/queue/que/alertqueue',
-            method: 'post',
+            method: 'POST',
             data: {
-              queid: app.globalData.queid,
-              state:"0"
+              'queid': queid,
+              'state': "0"
             },
-            success:function(res) {
-              if(res.data.msg == "1") {
+            success: function (res) {
+                console.log("=====================================>>>>队列销毁成功 :"+res.data)
+              if (res.data == "1") {
                 //提示用户，停止刷新list，并退到首页
-                clearInterval(that.data.i)
+                clearInterval(i)
                 wx.reLaunch({
                   url: '../home/home'
                 })
 
-              }else{
+              } else {
                 //未成功改变队列状态
               }
             }

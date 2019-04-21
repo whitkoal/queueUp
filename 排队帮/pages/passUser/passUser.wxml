@@ -2,7 +2,7 @@
 
 <view class="queid">您的队列码为:<view class="queid2">{{queid}}</view></view>   
 <form bindsubmit='queGoToDie'>
-<button plain='true'form-type="submit">销毁队列</button>
+<button form-type="submit">销毁队列</button>
 </form>
 <!-- <view wx:for="{{list}}">
 <view>{{index}} : {{item.openid}}</view>
