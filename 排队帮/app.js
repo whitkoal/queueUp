@@ -54,21 +54,21 @@ App({
                 that.globalData.state = res.data.state
                 if (res.data.state == 2) {
                   //用户在某个队列中正在排队
-                  wx.showModal({
-                    title: '提示',
-                    content: '您在一个队列中，是否进入？',
-                    cancelText: "不进入",
-                    confirmText: "进入",
-                    success(res) {
-                      if (res.confirm) {
+                  // wx.showModal({
+                  //   title: '提示',
+                  //   content: '您在一个队列中，是否进入？',
+                  //   cancelText: "不进入",
+                  //   confirmText: "进入",
+                  //   success(res) {
+                  //     if (res.confirm) {
                         wx.navigateTo({
                           url: "../chaxun/chaxun"
                         })
-                      } else if (res.cancel) {
-                        console.log('用户点击取消')
-                      }
-                    }
-                  })
+                  //     } else if (res.cancel) {
+                  //       console.log('用户点击取消')
+                  //     }
+                  //   }
+                  // })
                 } else if (res.data.state == 3) {
                   // 用户是某个队列的管理员
                   wx.navigateTo({

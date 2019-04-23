@@ -129,7 +129,7 @@ Page({
       data: {
         'openid': app.globalData.openid,
         'queid': app.globalData.queid,
-        'state': "1"
+        'state': "103"
       },
       success: function (res) {
         if (res.data.msg == "1") {
@@ -145,7 +145,7 @@ Page({
               if (res.data == "1") {
                 //提示用户，停止刷新list，并退到首页
                 clearInterval(i)
-                app.globalData.state = 1
+                app.globalData.state = 103      // 103表示用户所在队列被销毁了
                   wx.reLaunch({
                   url: '../home/home'
                 })
@@ -172,11 +172,11 @@ Page({
       data: {
         'openid': e.detail.value.openid,
         'queid': app.globalData.queid,
-        'state': "1"
+        'state': "102"
       },
       success: function (res) {
         if (res.data.msg == "1") {
-          //that.loadQueuer()       //经测试在此处执行此方法没有明显让用户通过更快
+          app.globalData.state = 102    // 102表示用户通过了
         } else {
           console.log(res.data.msg)
         }

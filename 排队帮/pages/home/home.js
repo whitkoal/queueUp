@@ -8,8 +8,9 @@ Page({
   data: {
     userInQueue: false,
     userControlQue: false ,
-    buttenSetUp: "创建队列",
-    buttenJoin: "加入队列"
+    buttonSetUpState: true,
+    buttonSetUp: "创建队列",
+    buttonJoin: "加入队列",
   },
 
   onLoad: function (options) {
@@ -76,26 +77,32 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    console.log("===========================>>onShow<<"+this.data.userControlQue)
+    console.log("===========================>>onShow<<home")
     var that = this
     if(app.globalData.state == 2) {
+      // 用户正在排队，显示提示信息，并把“加入队列”的button换成“返回队列”
       that.setData({
-        userInQueue: true,
         userControlQue: false,
-        buttenJoin: "返回队列"
+        userInQueue: true,
+        buttonSetUpState: false,
+        buttonJoin: "返回队列"
       })
     }else if(app.globalData.state == 3) {
+      // 用户是管理员, 显示提示信息, 并把"加入队列"button换成"管理队列"
       that.setData({
         userControlQue: true,
         userInQueue: false,
-        buttenSetUp: "管理队列"
+        buttonSetUpState: false,
+        buttonJoin: "管理队列"
       })
     }else {
+      // 用户为空闲状态
       that.setData({
         userControlQue: false,
         userInQueue: false,
-        buttenSetUp: "创建队列",
-        buttenJoin: "加入队列"
+        buttonSetUpState: true,
+        buttonSetUp: "创建队列",
+        buttonJoin: "加入队列"
       })
     }
   },

@@ -1,5 +1,7 @@
 <!--pages/chaxun/chaxun.wxml-->
 <view wx:if="{{err}}" class='moreuser'>您所在的队列已被取消</view>
+<view wx:if="{{ready}}">马上就到您了! </view>
+<view wx:if="{{complete}}">您终于排到头了</view>
 <view class="moreuser">您的前方还有<view class="moreuser2">{{userIndex}}</view>个人</view>
 <form bindsubmit='exitQue'>
 <button form-type='submit'>退出队列</button>

@@ -8,14 +8,50 @@ Page({
   data: {
     userIndex : 0,
     interval : null,
-    err: false
+    err: false,
+    ready: false,
+    complete: false
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+    var that = this
+    wx.request({
+      url: 'https://www.paion.xyz/queue/user/userIndex',
+      data: {
+        'openid': app.globalData.openid,
+        'queid': app.globalData.queid
+      },
+      method: 'POST',
+      dataType: 'json',
+      success: function (res) {
+        if (res.data.msg == 1) {
+          that.setData({
+            userIndex: res.data.userIndex
+          });
+          if (res.data.state == 102) {
+            that.setData({
+              complete: true,
+              ready: false
+            })
+          }
+          if (res.data.userIndex <= 2 && res.data.userIndex > 0) {
+            that.setData({
+              ready: true
+            })
+          }
+          console.log("用户实时 :" + that.data.userIndex)
+        } else {
+          that.setData({
+            err: true
+          })
+        }
+      },
+      fail: function (res) { },
+      complete: function (res) { },
+    })
   },
 
   /**
@@ -41,9 +77,20 @@ Page({
         dataType: 'json',
         success: function (res) {
           if(res.data.msg == 1) {
-          that.setData({
-            userIndex: res.data.userIndex
-          });
+            that.setData({
+              userIndex: res.data.userIndex
+            });
+            if(res.data.state == 102) {
+              that.setData({
+                complete: true,
+                ready: false
+              })
+            }
+            if(res.data.userIndex <= 2 && res.data.userIndex >0) {
+              that.setData({
+                ready: true
+              })
+            }
           console.log("用户实时 :" + that.data.userIndex)
           }else{
             that.setData({
@@ -55,7 +102,7 @@ Page({
         complete: function (res) { },
       })
     },
-      3000,
+      1500,
       app.globalData.openid,
       app.globalData.queid
     )
@@ -65,15 +112,16 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-    var that = this
-    clearInterval(that.data.interval)
+    var interval = this.data.interval
+    clearInterval(interval)
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    var interval = this.data.interval
+    clearInterval(interval)
   },
 
   /**
@@ -101,7 +149,7 @@ Page({
     * 提交表单,退出队列
     */
   exitQue: function (e) {
-    var that = this
+    var interval = this.data.interval
     var openid = app.globalData.openid
     wx.request({
       url: 'https://www.paion.xyz/queue/user/joinQue',
@@ -114,7 +162,9 @@ Page({
       success: function (res) {
         if (res.data.msg == "1") {
           console.log("tuichu队列成功! !!");
-          clearInterval(that.data.interval)
+          app.globalData.state = "1"
+          app.globalData.queid = "0"
+          clearInterval(interval)
           wx.reLaunch({
             url: '../home/home'
           })

@@ -1,5 +1,5 @@
 <!--pages/home/home.wxml-->
 <view wx:if="{{userInQueue}}" >检测到您正在排队，下拉页面进入</view>
 <view wx:if="{{userControlQue}}" >检测到您是队列管理员，下拉页面进入</view>
- <button class="homebtn1" bindtap="guanli">{{buttenSetUp}}</button>
-   <button class="homebtn2" bindtap="paidui">{{buttenJoin}}</button>
+ <button wx:if="{{buttonSetUpState}}" class="homebtn1" bindtap="guanli">{{buttonSetUp}}</button>
+   <button class="homebtn2" bindtap="paidui">{{buttonJoin}}</button>

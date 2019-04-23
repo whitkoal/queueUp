@@ -41,7 +41,8 @@ Page({
           if (res.data.msg == "1") {
             console.log("加入队列成功! !!");
             app.globalData.queid = e.detail.value.queid
-            wx.navigateTo({
+            app.globalData.state = "2"
+            wx.redirectTo({
               url: '../chaxun/chaxun'
             })
           } else {
