@@ -34,18 +34,25 @@ Page({
           if (res.data.state == 102) {
             that.setData({
               complete: true,
-              ready: false
+              ready: false,
+              err:false
             })
           }
           if (res.data.userIndex <= 2 && res.data.userIndex > 0) {
             that.setData({
-              ready: true
+              ready: true,
+
+              complete:false,
+              err:false
             })
           }
           console.log("用户实时 :" + that.data.userIndex)
         } else {
           that.setData({
-            err: true
+            err: true,
+
+            ready:false,
+            complete:false
           })
         }
       },
@@ -83,18 +90,26 @@ Page({
             if(res.data.state == 102) {
               that.setData({
                 complete: true,
-                ready: false
+                
+                ready: false,
+                err:false
               })
             }
             if(res.data.userIndex <= 2 && res.data.userIndex >0) {
               that.setData({
-                ready: true
+                ready: true,
+
+                complete:false,
+                err:false
               })
             }
           console.log("用户实时 :" + that.data.userIndex)
           }else{
             that.setData({
-              err : true
+              err : true,
+
+              ready:false,
+              complete:false
             })
           }
         },

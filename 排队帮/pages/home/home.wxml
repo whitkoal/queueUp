@@ -1,9 +1,12 @@
 <!--pages/home/home.wxml-->
 <view class="paiduiinq" wx:if="{{userInQueue}}">
- <view class="paiduiing">检测到您正在排队，下拉页面进入</view>
+ <view class="paiduiing">
+ <text>检测到您正在排队\n下拉页面进入</text>
+ </view>
+ 
 </view>
 <view class="guanliinq" wx:if="{{userControlQue}}" >
- <view class="guanliing">检测到您是队列管理员，下拉页面进入</view>
+ <view class="guanliing"><text>检测到您是队列管理员\n下拉页面进入</text></view>
 </view>
 
 

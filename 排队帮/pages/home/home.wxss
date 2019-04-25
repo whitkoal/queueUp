@@ -20,7 +20,7 @@ page{
   align-items: center;
   border-radius: 25px;
   box-shadow: 10px 12px 14px #535353;
-  font-size: 20px;
+  font-size: 25px;
 }
 .guanliinq{
   display: flex;
@@ -39,7 +39,7 @@ page{
   align-items: center;
   border-radius: 25px;
   box-shadow: 10px 12px 14px #535353;
-  font-size: 20px;
+  font-size: 25px;
 }
 .one{
   display: flex;
