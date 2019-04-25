@@ -7,15 +7,15 @@
     "pages/guanli/guanli",
     "pages/index/index",
     "pages/QRcode/QRcode",
-    
     "pages/logs/logs"
     
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#f9fafa",
+    "navigationBarBackgroundColor": "#f5f5f5",
     "navigationBarTitleText": "排队帮",
-    "navigationBarTextStyle": "black"
+    "navigationBarTextStyle": "black",
+    "backgroundColor":"#30a3a4"
   },
   "sitemapLocation": "sitemap.json"
 }

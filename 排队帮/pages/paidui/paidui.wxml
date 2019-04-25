@@ -13,12 +13,13 @@
     <!-- </view>
     </view>
   </form> --> 
-
+<view class="paiduiinp">
+<view class="paiduidiv">
 <form bindsubmit='submitForm'>
   <view class="container">
     <view class='container-info'>
       <view class="man-form-info">
-        <view class='queid'>请输入您要加入队列的队列码
+        <view class='queid'>请输入您加入队列的队列码
           <input maxlength='11' placeholder='请输入队列码' name="queid"></input>
         </view>
         <view class='queid'>请输入您的称谓
@@ -31,3 +32,5 @@
      </view>
    </view>
  </form>
+ </view>
+ </view>

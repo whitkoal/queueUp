@@ -47,6 +47,7 @@ Page({
            'leaderopenid': openid,
            'leaderwxname': e.detail.value.leaderwxname,
            'quename': e.detail.value.quename,
+           'state': "1",
            'introduce': e.detail.value.introduce
          },
          success: function (res) {

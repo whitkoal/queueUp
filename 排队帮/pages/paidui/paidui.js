@@ -39,14 +39,19 @@ Page({
         },
         success: function (res) {
           if (res.data.msg == "1") {
-            console.log("加入队列成功! !!");
+            wx.showToast({
+              title: '提交成功！',
+            })
             app.globalData.queid = e.detail.value.queid
             app.globalData.state = "2"
             wx.redirectTo({
               url: '../chaxun/chaxun'
             })
           } else {
-            console.log(res.data.msg)
+            wx.showToast({
+              title: '队列码错误',
+              icon:"none"
+            })
           }
 
         },
@@ -63,9 +68,7 @@ Page({
     let form = params;
     console.log('将要提交的表单信息：', form);
 
-    wx.showToast({
-      title: '提交成功！',
-    })
+
 
   },
   initValidate() {

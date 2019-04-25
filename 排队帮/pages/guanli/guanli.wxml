@@ -1,3 +1,5 @@
+<view class="guanliinp">
+<view class="guanlidiv">
 <form bindsubmit='submitForm'>
   <view class="container">
     <view class='container-info'>
@@ -23,4 +25,5 @@
  
    </view>
  </form>
- 
+ </view>
+ </view>
