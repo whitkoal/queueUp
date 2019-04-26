@@ -11,7 +11,7 @@ Page({
     err: false,
     ready: false,
     complete: false,
-    queName:null
+    queName:"无效"
   },
 
   /**
