@@ -145,7 +145,7 @@ Page({
               if (res.data == "1") {
                 //提示用户，停止刷新list，并退到首页
                 clearInterval(i)
-                app.globalData.state = 103      // 103表示用户所在队列被销毁了
+                app.globalData.state = 0      // 103表示用户所在队列被销毁了
                   wx.reLaunch({
                   url: '../home/home'
                 })

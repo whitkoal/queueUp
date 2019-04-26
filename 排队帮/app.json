@@ -8,7 +8,6 @@
     "pages/index/index",
     "pages/QRcode/QRcode",
     "pages/logs/logs"
-    
   ],
   "window": {
     "backgroundTextStyle": "light",

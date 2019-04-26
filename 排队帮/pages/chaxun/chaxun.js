@@ -10,7 +10,8 @@ Page({
     interval : null,
     err: false,
     ready: false,
-    complete: false
+    complete: false,
+    queName:null
   },
 
   /**
@@ -18,6 +19,7 @@ Page({
    */
   onLoad: function (options) {
     var that = this
+    var interval = this.data.interval
     wx.request({
       url: 'https://www.paion.xyz/queue/user/userIndex',
       data: {
@@ -27,11 +29,14 @@ Page({
       method: 'POST',
       dataType: 'json',
       success: function (res) {
+        
         if (res.data.msg == 1) {
           that.setData({
-            userIndex: res.data.userIndex
+            userIndex: res.data.userIndex,
+            queName:res.data.queName
           });
           if (res.data.state == 102) {
+            clearInterval(interval)
             that.setData({
               complete: true,
               ready: false,
@@ -73,6 +78,7 @@ Page({
    */
   onShow: function () {
     var that = this
+    var interval = this.data.interval
     this.data.interval = setInterval(function (openid, queid) {
       wx.request({
         url: 'https://www.paion.xyz/queue/user/userIndex',
@@ -83,11 +89,13 @@ Page({
         method: 'POST',
         dataType: 'json',
         success: function (res) {
+
           if(res.data.msg == 1) {
             that.setData({
               userIndex: res.data.userIndex
             });
             if(res.data.state == 102) {
+              clearInterval(interval)
               that.setData({
                 complete: true,
                 
@@ -176,7 +184,7 @@ Page({
       },
       success: function (res) {
         if (res.data.msg == "1") {
-          console.log("tuichu队列成功! !!");
+          console.log("退出队列成功! !!");
           app.globalData.state = "1"
           app.globalData.queid = "0"
           clearInterval(interval)

@@ -1,6 +1,6 @@
 page {
   font-size: 35rpx;
-  background-color: #f5f5f5;
+   background-color: #f5f5f5;
 }
 .guanliinp{
   display: flex;
@@ -19,7 +19,7 @@ page {
   display: -webkit-flex;
   align-items: center;
   border-radius: 25px;
-  box-shadow: 20px 22px 24px #808080;
+  box-shadow: 0 16px 50px 0 rgba(0,0,0,0.24),0 20px 50px 0 rgba(0,0,0,0.19);
 }
 input:hover {
   border: 2px solid rgb(0, 0, 0);
@@ -83,9 +83,9 @@ input:hover {
   cursor:pointer;
   text-decoration: none;
   outline:none;
-  color:#f0f8a3;
-  background-color:#131212;
+  color:#ffffff;
+  background-color:#000000;
   border-radius: 50px;
-  box-shadow:0 9px #999;
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
 
 }

@@ -8,6 +8,7 @@
 <view class="cxone">
 <view class="chaxundiv">
   <view class="chaxunque">
+    <view class="quenames">{{queName}}队列</view>
     <view class="moreuser">您的前方还有<view class="moreuser2">{{userIndex}}<view class="moreuser3">个人</view></view></view>
 <form bindsubmit='exitQue'>
   <view class="chaxunbtn">

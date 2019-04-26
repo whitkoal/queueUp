@@ -1,6 +1,6 @@
 page {
   font-size: 35rpx;
-  background-color: #f3f3f3;
+   background-color: #f5f5f5;
 }
 
 input:hover {
@@ -23,7 +23,7 @@ input:hover {
   display: -webkit-flex;
   align-items: center;
   border-radius: 25px;
-  box-shadow: 20px 22px 24px #808080;
+  box-shadow: 0 16px 50px 0 rgba(0,0,0,0.24),0 20px 50px 0 rgba(0,0,0,0.19);
 }
 .container-info {
    padding: 5%;
@@ -67,9 +67,9 @@ input:hover {
   cursor:pointer;
   text-decoration: none;
   outline:none;
-  color:#f8f7a3;
+  color:#ffffff;
   background-color:#131212;
   border-radius: 50px;
-  box-shadow:0 9px #999;
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
 
 }
