@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/newhome/newhome",
     "pages/home/home",
     "pages/chaxun/chaxun",
     "pages/passUser/passUser",
@@ -7,14 +8,27 @@
     "pages/guanli/guanli",
     "pages/index/index",
     "pages/QRcode/QRcode",
-    "pages/logs/logs"
+    "pages/logs/logs",
+    "pages/myQueue/myQueue",
+    "pages/ticket/ticket",
+    "pages/search/search",
+    "pages/notice/notice",
+    "pages/shop/shop",
+    "pages/chat/chat"
   ],
   "window": {
-    "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#f5f5f5",
+    "navigationBarBackgroundColor": "##39b54a",
     "navigationBarTitleText": "排队帮",
-    "navigationBarTextStyle": "black",
-    "backgroundColor":"#30a3a4"
+    "navigationStyle": "custom",
+    "navigationBarTextStyle": "white"
   },
-  "sitemapLocation": "sitemap.json"
+  "usingComponents": {
+    "cu-custom": "/colorui/components/cu-custom"
+  },
+   "sitemapLocation": "sitemap.json",
+   "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置接口的效果展示"
+    }
+  }
 }

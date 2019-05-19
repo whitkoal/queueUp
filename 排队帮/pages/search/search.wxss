@@ -1,0 +1,12 @@
+.page {
+  height: 100Vh;
+  width: 100vw;
+}
+
+.page.show {
+  overflow: hidden;
+}
+
+.hot {
+  margin-top: 100rpx
+}

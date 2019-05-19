@@ -1,0 +1,33 @@
+<scroll-view scroll-y="{{modalName==null}}" class="page {{modalName!=null?'show':''}}">
+<cu-custom bgColor="bg-gradual-orange" isBack="{{true}}">  
+  <view slot="backText"><text class="cuIcon-back"></text>  返回</view>
+  <view slot="content">消息</view>
+</cu-custom>
+
+<view class="cu-list menu-avatar sm-border shadow-lg">
+
+  <view class="cu-item  {{modalName=='move-box-'+ index?'move-cur':''}}" wx:for="{{4}}" wx:key bindtouchstart="ListTouchStart" bindtouchmove="ListTouchMove" bindtouchend="ListTouchEnd" data-target="move-box-{{index}}">
+    <view class="cu-avatar radius lg" style="background-image:url(https://ossweb-img.qq.com/images/lol/img/champion/Morgana.png);">
+    </view>
+    <view class="content">
+      <view class="text-pink">
+        <text class="text-cut">莫甘娜</text>
+        <view class="cu-tag round bg-orange sm">法师</view>
+      </view>
+      <view class="text-gray text-sm flex">
+        <text class="text-cut">
+        <text class="cuIcon-infofill text-red  margin-right-xs"></text> 凯尔，你被自己的光芒变的盲目！</text>
+      </view>
+    </view>
+    <view class="action">
+      <view class="text-grey text-xs">22:20</view>
+      <view class="cu-tag round bg-red sm">5</view>
+    </view>
+    <view class="move">
+      <view class="bg-grey">置顶</view>
+      <view class="bg-red">删除</view>
+    </view>
+  </view>
+  
+</view>
+</scroll-view>

@@ -15,3 +15,7 @@
 <view class="two">
 <button class="homebtn2" bindtap="paidui">{{buttonJoin}}</button>
 </view>
+
+<view class="two">
+<button class="homebtn2" bindtap="paidui">开始使用</button>
+</view>

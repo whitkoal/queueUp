@@ -1,0 +1,24 @@
+<!-- components/storeList/storeList.wxml-->
+<view>
+<view wx:for="{{storeList}}" wx:key>
+<view class="cu-card solid-bottom article {{isCard?'no-card':''}} shadow-lg solid-top" bindtap='showStore' data-detail='{{item.store}}'>
+  <view class="cu-item">
+    <view class="title">
+      <view class="text-cut">{{item.store.storeName}}</view>
+    </view>
+    <view class="content">
+      <image src="{{item.store.storeImgurl}}" mode="aspectFill"></image>
+      <view class="desc">
+        <view class="text-content">{{item.store.storeIntroduce}}</view>
+        <view>
+          <view class="cu-tag bg-red light sm round {{bg-item.color}}" wx:for='{{item.tagList}}' wx:key='{{item.tagId}}'>{{item.tagIntroduce}}
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+</view>
+<view class="cu-load bg-gray radius light {{!isLoad?'loading':'over'}}" wx:if="{{hasLoading}}"></view>
+<view class="cu-load bg-red erro radius light" wx:if="{{hasErro}}"></view>
+</view>

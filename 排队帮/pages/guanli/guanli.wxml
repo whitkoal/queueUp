@@ -1,3 +1,13 @@
+<!-- <cu-custom bgColor="bg-gradual-blue" isBack="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content">背景颜色</view>
+</cu-custom> -->
+<cu-custom bgImage="//hbimg.huabanimg.com/cb400ae675027476cef23178d2cd100c9db842bc26f75-giAK1k_fw658" isBack="{{true}}">
+  
+  <view slot="backText"><text class="cuIcon-back"></text>  返回</view>
+  <view slot="content">排队帮</view>
+</cu-custom>
+
 <view class="guanliinp">
 <view class="guanlidiv">
 <form bindsubmit='submitForm'>

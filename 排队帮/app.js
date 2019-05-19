@@ -1,22 +1,11 @@
-//app.js
-
-
-// "pages/home/home", //首页
-// "pages/index/index", //登录, 弃用,可以考虑删掉
-// "pages/guanli/guanli", //创建队列
-// "pages/QRcode/QRcode", //生成二维码
-// "pages/pass/pass", // 创建者对顾客的操作页面
-// "pages/paidui/paidui", //加入队列
-// "pages/chaxun/chaxun", //顾客等位页面,查询剩余人数
-// "pages/logs/logs" // 日志, 待添加, 当前无效
-
 App({
   globalData: {
     userInfo: null,
     openid: null,
     session_key:null,
     queid:null,
-    state:0
+    state:0,
+    LocationInfo: '中国,北京,北京市,朝阳区'
   },
   
   onLaunch: function () {
@@ -82,7 +71,7 @@ App({
                   duration: 1500
                 })
               } else {
-                login();
+                //login();
               }
 
             },
@@ -101,22 +90,38 @@ App({
     }
     login();
 
-    wx.getSetting({
-      success: res => {
-        if (res.authSetting['scope.userInfo']) {
-       
-          wx.getUserInfo({
-            success: res => {
-              this.globalData.userInfo = res.userInfo
-
+    // wx.getSetting({
+    //   success: res => {
+    //     if (true) {
+    //       wx.openSetting({
+    //         success(res) {
+    //           console.log(res.authSetting)
+    //           // res.authSetting = {
+    //           //   "scope.userInfo": true,
+    //           //   "scope.userLocation": true
+    //           // }
+    //         }
+    //       }),
+    //       wx.getUserInfo({
+    //         success: res => {
+    //           this.globalData.userInfo = res.userInfo
+    //           console.log("res.userInfo::" + res.userInfo)
               
-              if (this.userInfoReadyCallback) {
-                this.userInfoReadyCallback(res)
-              }
-            }
-          })
-        }
-      }
+    //           if (this.userInfoReadyCallback) {
+    //             this.userInfoReadyCallback(res)
+    //           }
+    //         }
+    //       })
+    //     }
+    //   }
+    // }),
+    wx.getSystemInfo({
+      success: e => {
+        this.globalData.StatusBar = e.statusBarHeight;
+        let custom = wx.getMenuButtonBoundingClientRect();
+        this.globalData.Custom = custom;
+        this.globalData.CustomBar = custom.bottom + custom.top - e.statusBarHeight;
+      },
     })
   },  
   
