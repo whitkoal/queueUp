@@ -1,0 +1,66 @@
+<!--pages/search/search.wxml-->
+<cu-custom bgColor="bg-gradual-green" isBack="{{true}}">
+  <view slot="backText"><text class="cuIcon-back"></text>  返回</view>
+  <view slot="content">搜索</view>
+</cu-custom>
+
+<!-- 搜索框 -->
+<view class="cu-bar bg-white search fixed" style="top:{{CustomBar}}px">
+  <view class="search-form round">
+    <text class="cuIcon-search"></text>
+    <input type="text" placeholder="搜索" confirm-type="search" bindconfirm="searchStore"></input>
+  </view>
+</view>
+
+<!-- 授权位置 -->
+<view wx:if='{{!hiddenReAuthorizePop}}'>
+  <button bindtap='openLocationSetting'class="bg-blue hot">需要您授权位置信息</button>
+</view>
+
+<!-- Top10 -->
+<view class="cu-list menu sm-border hot" wx:if="{{hasTop10}}">
+
+  <view class="cu-item menuArrow" wx:for="{{3}}" wx:key>
+    <navigator class="content" hover-class="none" url="../list/list" open-type="redirect">
+      <text class="cuIcon-hotfill text-orange"></text>
+      <text class="text-grey">Navigator 跳转1</text>
+    </navigator>
+  </view>
+
+  <view class="cu-item menuArrow" wx:for="{{7}}" wx:key>
+    <navigator class="content" hover-class="none" url="../list/list" open-type="redirect">
+      <text class="cuIcon-hot text-orange"></text>
+      <text class="text-grey">热门跳转1</text>
+    </navigator>
+  </view>
+
+</view>
+<scroll-view scroll-y bindscrolltolower='lower' wx:if="{{hasStoreList}}" class='hot' style='height:100vh'>
+<!-- 店铺卡片 -->
+  <!-- 加载卡片 -->
+<view wx:if='{{havePower}}'>
+
+  <view wx:for="{{storeList}}" wx:key>
+    <view class="cu-card solid-bottom article no-card shadow-lg" bindtap='showStore' data-detail='{{item.store}}'>
+      <view class="cu-item">
+        <view class="title">
+          <view class="text-cut">{{item.store.storeName}}</view>
+        </view>
+        <view class="content">
+          <image src="{{item.store.storeImgurl}}" mode="aspectFill"></image>
+          <view class="desc">
+            <view class="text-content">{{item.store.storeIntroduce}}</view>
+            <view>
+              <view class="cu-tag bg-red light sm round {{bg-item.color}}" wx:for='{{item.tagList}}' wx:key='{{item.tagId}}'>{{item.tagIntroduce}}
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  
+  <view class="cu-load bg-gray radius light {{!isLoad?'loading':'over'}}" wx:if="{{hasLoading}}"></view>
+  <view class="cu-load bg-red erro radius light" wx:if="{{hasErro}}"></view>
+</view>
+</scroll-view>

@@ -1,0 +1,43 @@
+<!--pages/passUser/passUser.wxml-->
+<view class="quez">
+<view class="quef">
+  <view class="quediv">
+    <view class="queid">您的队列码为:<view class="queid2">{{queid}}</view></view>   
+    <form bindsubmit='queGoToDie'>
+      <view class="outque">
+        <button class="btn1" form-type="submit">销毁队列</button>
+      </view>
+    </form>
+  </view>
+</view>
+</view>
+
+<view class="quez2" wx:for="{{list}}">
+<view class="box-big" >
+    <view class="box" >
+
+      <view class="quename">
+        第{{index + 1}}位 {{item.userwxname}}
+      </view>
+      <view class="quepass">
+        <form bindsubmit='formSubmit'>
+
+          <view class="container">
+
+          <view class="queiddd">
+            <input name="openid" value="{{item.openid}}" disabled='true'></input>
+          </view>
+
+          <view class='submit-form-info'>
+            <button class="btn2" form-type='submit'>Pass</button>
+          </view>
+
+        </view>
+
+      </form>
+
+      </view>
+
+    </view>
+</view>
+</view>

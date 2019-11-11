@@ -1,0 +1,6 @@
+<!--pages/ticket/ticket.wxml-->
+<cu-custom bgColor="bg-gradual-orange" isBack="{{true}}">  
+  <view slot="backText"><text class="cuIcon-back"></text>  返回</view>
+  <view slot="content">排队帮</view>
+</cu-custom>
+<text>pages/ticket/ticket.wxml</text>

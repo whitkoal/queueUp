@@ -1,0 +1,39 @@
+<!-- <cu-custom bgColor="bg-gradual-blue" isBack="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content">背景颜色</view>
+</cu-custom> -->
+<cu-custom bgImage="//hbimg.huabanimg.com/cb400ae675027476cef23178d2cd100c9db842bc26f75-giAK1k_fw658" isBack="{{true}}">
+  
+  <view slot="backText"><text class="cuIcon-back"></text>  返回</view>
+  <view slot="content">排队帮</view>
+</cu-custom>
+
+<view class="guanliinp">
+<view class="guanlidiv">
+<form bindsubmit='submitForm'>
+  <view class="container">
+    <view class='container-info'>
+      <view class="man-form-info">
+        <view class='leaderwxname'>创建者姓名
+          <input maxlength='20' placeholder='请输入姓名' name="leaderwxname"></input>
+        </view>
+        <view class='quename'>
+          队列名称
+      <input maxlength='30' placeholder='请输入队列名称'  name="quename"></input>
+       </view>
+
+       <view class='introduce'>
+         简介
+         <textarea maxlength='100' placeholder='队列简介' name="introduce"></textarea>
+         </view>
+       </view>
+     </view>
+ 
+     <view class='submit-form-info'>
+       <button form-type='submit'>提交</button>
+     </view>
+ 
+   </view>
+ </form>
+ </view>
+ </view>

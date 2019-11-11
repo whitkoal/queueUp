@@ -1,0 +1,20 @@
+<!--pages/chaxun/chaxun.wxml-->
+<view class="chaxun">
+<view wx:if="{{err}}" class='chaxuntext'>您所在的队列已被取消</view>
+<view wx:if="{{ready}}" class='chaxuntext'>马上就到您了! </view>
+<view wx:if="{{complete}}" class='chaxuntext'>您终于排到头了</view>
+</view>
+
+<view class="cxone">
+<view class="chaxundiv">
+  <view class="chaxunque">
+    <view class="quenames">{{queName}}队列</view>
+    <view class="moreuser">您的前方还有<view class="moreuser2">{{userIndex}}<view class="moreuser3">个人</view></view></view>
+<form bindsubmit='exitQue'>
+  <view class="chaxunbtn">
+    <button class="cxbtn" form-type='submit'>退出队列</button>
+  </view>
+</form>
+</view>
+</view>
+</view>

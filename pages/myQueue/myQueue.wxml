@@ -1,0 +1,9 @@
+<!--pages/myQueue/myQueue.wxml-->
+<cu-custom bgColor="bg-gradual-blue" isBack="{{true}}">  
+  <view slot="backText"><text class="cuIcon-back"></text>  返回</view>
+  <view slot="content">我的队列</view>
+</cu-custom>
+<QueueList>
+</QueueList>
+<userList>
+</userList>

@@ -1,0 +1,21 @@
+<!--pages/home/home.wxml-->
+<view class="paiduiinq" wx:if="{{userInQueue}}">
+ <view class="paiduiing">
+ <text>检测到您正在排队\n下拉页面进入</text>
+ </view>
+ 
+</view>
+<view class="guanliinq" wx:if="{{userControlQue}}" >
+ <view class="guanliing"><text>检测到您是队列管理员\n下拉页面进入</text></view>
+</view>
+
+<view class="one">
+<button wx:if="{{buttonSetUpState}}" class="homebtn1" bindtap="guanli">{{buttonSetUp}}</button>
+</view>
+<view class="two">
+<button class="homebtn2" bindtap="paidui">{{buttonJoin}}</button>
+</view>
+
+<view class="two">
+<button class="homebtn2" bindtap="paidui">开始使用</button>
+</view>
