@@ -1,6 +1,0 @@
-{
-  "usingComponents": {
-    "userList": "/components/userList/userList",
-    "QueueList": "/components/queueList/queueList"
-  }
-}
